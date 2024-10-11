@@ -1,0 +1,106 @@
+/* src/Css/AuctionListings.css */
+
+.auction-listings-container {
+    padding: 40px;
+    background-color: #f8f9fa;
+    font-family: 'Arial', sans-serif;
+  }
+  
+  .auction-listings-container h1 {
+    font-size: 2.5em;
+    color: #333;
+    text-align: center;
+    margin-bottom: 30px;
+  }
+  
+  .filter-sort-options {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 30px;
+    gap: 10px;
+  }
+  
+  .filter-sort-options input,
+  .filter-sort-options select {
+    padding: 10px;
+    font-size: 1em;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 30%;
+  }
+  
+  .auction-items {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+  }
+  
+  .auction-item {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    padding: 20px;
+    width: 30%;
+    margin-bottom: 30px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+  }
+  
+  .auction-item:hover {
+    transform: scale(1.05);
+  }
+  
+  .auction-item h3 {
+    font-size: 1.5em;
+    margin-bottom: 10px;
+    color: #3B3030;
+  }
+  
+  .auction-item p {
+    font-size: 1.1em;
+    color: #666;
+    margin-bottom: 10px;
+  }
+  
+  .bid-now-button {
+    background-color: #07E6D2;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 1em;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .bid-now-button:hover {
+    background-color: #05c3b1;
+  }
+  
+  .pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 30px;
+  }
+  
+  .pagination button {
+    background-color: #795757;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    margin: 0 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .pagination button:hover {
+    background-color: #05c3b1;
+  }
+  
+  .pagination span {
+    font-size: 1.2em;
+    color: #333;
+  }
+  

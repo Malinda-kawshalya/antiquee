@@ -1,0 +1,73 @@
+/* src/Css/BidNow.css */
+.bid-now-container {
+    display: flex;
+    padding: 40px;
+    background-color: #f9f9f9;
+    color: #333;
+  }
+  
+  .product-image img {
+    width: 300px; /* Adjust as necessary */
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  }
+  
+  .product-details {
+    margin-left: 20px;
+    flex: 1;
+  }
+  
+  .product-details h1 {
+    font-size: 2em;
+    color: #07E6D2; /* Primary color */
+  }
+  
+  .product-details p {
+    font-size: 1.5em;
+    margin: 10px 0;
+  }
+  
+  .original-price {
+    text-decoration: line-through;
+    color: #888;
+  }
+  
+  .discount {
+    color: #ff0000; /* Red for discount */
+  }
+  
+  .delivery-info, .guarantee, .free-returns {
+    font-size: 1em;
+    margin: 10px 0;
+  }
+  
+  .quantity-container {
+    display: flex;
+    align-items: center;
+    margin: 20px 0;
+  }
+  
+  .quantity-container button {
+    background-color: #07E6D2;
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+  }
+  
+  .bid-button {
+    background-color: #ff4c4c; /* Color for the Bid button */
+    color: white;
+    padding: 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1.2em;
+    transition: background-color 0.3s ease;
+  }
+  
+  .bid-button:hover {
+    background-color: #ff0000; /* Darker red on hover */
+  }
+  

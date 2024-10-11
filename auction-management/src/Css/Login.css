@@ -1,0 +1,46 @@
+.login-container {
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 2rem;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .login-container h2 {
+    text-align: center;
+    margin-bottom: 1.5rem;
+  }
+  
+  .form-group {
+    margin-bottom: 1rem;
+  }
+  
+  .form-control {
+    width: 100%;
+    padding: 0.5rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  .btn-block {
+    width: 100%;
+    padding: 0.75rem;
+    margin-top: 1rem;
+  }
+  
+  .extra-options {
+    margin-top: 1rem;
+    text-align: center;
+  }
+  
+  .social-login {
+    margin-top: 1.5rem;
+    text-align: center;
+  }
+  
+  .social-login button {
+    margin: 0.5rem;
+    padding: 0.5rem 1rem;
+  }
+  
