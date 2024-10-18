@@ -9,7 +9,7 @@ import image2 from './Images/vintage art.jpeg';
 const Home = () => {
   // Sample data for featured auctions, categories, and top-selling items
   const featuredAuctions = [
-    { id: 1, title: 'Vintage Artwork', image: image4 },
+    { id: 1, title: 'Vintage Artwork', image: image2 },
     { id: 2, title: 'Antique Furniture', image: image2 },
     { id: 3, title: 'Rare Coins', image: image2},
   ];
@@ -23,7 +23,7 @@ const Home = () => {
   ];
 
   const topSellingItems = [
-    { id: 1, title: 'Golden Necklace', image: image4 },
+    { id: 1, title: 'Golden Necklace', image: image2 },
     { id: 2, title: 'Collectible Stamps', image: 'path_to_top_item_image2.jpg' },
     { id: 3, title: 'Vintage Watch', image: 'path_to_top_item_image3.jpg' },
   ];

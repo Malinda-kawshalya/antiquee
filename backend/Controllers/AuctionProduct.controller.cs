@@ -21,7 +21,7 @@ namespace backend.Controllers
 
 
         [HttpPost("create")]
-        public IActionResult CreateEmployee(CreateProductDTO dto){
+        public IActionResult CreateAuction(CreateProductDTO dto){
             var newProduct = new Product(){
                Name = dto.Name,
                Price = dto.Price
