@@ -1,13 +1,17 @@
-import React, { useState } from 'react';
-import './Css/Signup.css'; // custom CSS file
+import React, { useState } from "react";
+import axios from "axios"; // Import Axios for HTTP requests
+import "./Css/Signup.css"; // custom CSS file
 
 const SignUp = () => {
   const [formData, setFormData] = useState({
-    username: '',
-    email: '',
-    password: '',
-    confirmPassword: '',
+    username: "",
+    email: "",
+    password: "",
+    confirmPassword: "",
   });
+
+  const [error, setError] = useState(null); // For showing error messages
+  const [success, setSuccess] = useState(null); // For showing success messages
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -15,14 +19,29 @@ const SignUp = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Add your sign-up logic here
-    console.log('Form data submitted:', formData);
+
+    axios
+      .post("http://localhost:5140/api/User/signUp", formData) // Change to your API URL
+      .then((response) => {
+        console.log(response);
+        setSuccess(response.data.message); // Show success message
+        setError(null); // Clear any previous errors
+      })
+      .catch((error) => {
+        console.log(error);
+        setError(error.response?.data?.message || "Something went wrong"); // Show error message
+        setSuccess(null); // Clear any previous success message
+      });
   };
 
   return (
     <div className="signup-container">
       <div className="signup-form-wrapper shadow-lg p-4 mb-5 bg-white rounded">
         <h2 className="text-center mb-4">Sign Up</h2>
+
+        {error && <div className="alert alert-danger">{error}</div>}
+        {success && <div className="alert alert-success">{success}</div>}
+
         <form onSubmit={handleSubmit}>
           <div className="form-group mb-3">
             <label htmlFor="username">Username</label>
@@ -76,10 +95,17 @@ const SignUp = () => {
               required
             />
           </div>
-          <button type="submit" className="btn btn-primary w-100">Create Account</button>
+          <button type="submit" className="btn btn-primary w-100">
+            Create Account
+          </button>
         </form>
         <div className="text-center mt-3">
-          <p>Already have an account? <a href="/login" className="signup-link">Sign In</a></p>
+          <p>
+            Already have an account?{" "}
+            <a href="/login" className="signup-link">
+              Sign In
+            </a>
+          </p>
         </div>
       </div>
     </div>

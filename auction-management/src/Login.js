@@ -1,21 +1,37 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import axios from 'axios'; // Import Axios for making HTTP requests
 import './Css/Login.css';
-
 
 const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [error, setError] = useState(null); // For displaying error messages
+  const [success, setSuccess] = useState(null); // For displaying success messages
 
-  const handleLogin = (e) => {
+  const handleLogin = async (e) => {
     e.preventDefault();
-    // Add your login logic here
-    console.log("Login attempt with", email, password);
+    setError(null);
+    setSuccess(null);
+
+    try {
+      const response = await axios.post('http://localhost:5140/api/User/login', { email, password }); // Replace with your backend URL
+      console.log('Login successful:', response.data);
+      setSuccess('Login successful!'); // Set success message
+      // Save JWT token or handle login session as needed
+      localStorage.setItem('token', response.data.token);
+    } catch (error) {
+      setError(error.response?.data?.message || 'Invalid email or password'); // Show error message
+    }
   };
 
   return (
     <div className="login-container">
       <h2>Login</h2>
+      
+      {error && <div className="alert alert-danger">{error}</div>}
+      {success && <div className="alert alert-success">{success}</div>}
+
       <form onSubmit={handleLogin}>
         <div className="form-group">
           <label htmlFor="email">Email</label>
@@ -50,9 +66,9 @@ const Login = () => {
         <Link to="/forgot-password">Forgot Password?</Link>
         <p>Don't have an account? <Link to="/SignUp">Sign Up</Link></p>
       </div>
-
     </div>
   );
 };
 
 export default Login;
+

@@ -34,7 +34,7 @@ namespace backend.Controllers
             var user = new User(){
                 //Name = dto.Name,
                 Email = dto.Email,
-                Phone = dto.Phone,
+                ConfirmPassword = dto.ConfirmPassword,
                 Username = dto.Username,
                 Password = dto.Password
                 
@@ -70,9 +70,11 @@ namespace backend.Controllers
 
     });
 }
-     [HttpPost("sign up")]
+     [HttpPost("signUp")]
         public async Task<IActionResult> Register([FromBody] RegisterDTO registerDTO)
         {
+             Console.WriteLine("SignUpfunction");
+            Console.WriteLine(registerDTO) ;
             // Check if email already exists
             var existingUser = await dbContext.Users.FirstOrDefaultAsync(u => u.Email == registerDTO.Email);
             if (existingUser != null)
@@ -92,7 +94,8 @@ namespace backend.Controllers
                 Id = Guid.NewGuid(),
                 Username = registerDTO.Username,
                 Email = registerDTO.Email,
-                Password = registerDTO.Password 
+                Password = registerDTO.Password ,
+                ConfirmPassword = registerDTO.ConfirmPassword
             };
 
             // Add user to the database
