@@ -41,10 +41,10 @@ namespace backend.Controllers
 
             };
 
-             dbContext.Add(User);
+             dbContext.Users.Add(user);
              dbContext.SaveChanges();
 
-             return Ok(User);
+             return Ok(user);
         }
 
           [HttpPost("login")]

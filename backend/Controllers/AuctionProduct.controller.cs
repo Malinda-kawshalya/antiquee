@@ -28,7 +28,7 @@ namespace backend.Controllers
 
             };
 
-             dbContext.Add(newProduct);
+             dbContext.Products.Add(newProduct);
              dbContext.SaveChanges();
 
              return Ok(newProduct);
