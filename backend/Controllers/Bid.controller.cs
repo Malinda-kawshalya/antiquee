@@ -21,7 +21,7 @@ public class BidController : ControllerBase
     [HttpPost]
     public async Task<IActionResult> PlaceBid([FromBody] CreateBidDTO dto)
     {
-        var auction = await _context.Products.FindAsync(dto.AuctionId);
+        var auction = await _context.Auctions.FindAsync(dto.AuctionId);
 
         if (auction == null)
             return NotFound("Auction not found");
@@ -34,10 +34,11 @@ public class BidController : ControllerBase
             Id = Guid.NewGuid(),
             Amount = dto.Amount,
             BidTime = DateTime.UtcNow,
-            UserId = dto.UserId
+            UserId = dto.UserId,
+            BidderId = dto.BidderId
         };
 
-        auction.Price = dto.Amount;
+        auction.StartingPrice = dto.Amount;
 
         _context.Bids.Add(bid);
         await _context.SaveChangesAsync();
@@ -55,5 +56,11 @@ public class BidController : ControllerBase
 
         return Ok(bids);
     }
+
+
 }
+
+
+
 }
+

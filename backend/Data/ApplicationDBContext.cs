@@ -9,9 +9,9 @@ namespace backend.Data {
 
         }
 
-        //! Employee Collection
+        // DATA Collection
         public DbSet<User> Users { get; set; }
-        public DbSet<Product> Products { get; set; }
+        public DbSet<Auction> Auctions { get; set; }
         public DbSet<Bid> Bids { get; set; }
     }
 }

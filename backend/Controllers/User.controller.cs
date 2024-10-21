@@ -36,7 +36,8 @@ namespace backend.Controllers
                 Email = dto.Email,
                 ConfirmPassword = dto.ConfirmPassword,
                 Username = dto.Username,
-                Password = dto.Password
+                Password = dto.Password,
+                UserId = dto.UserId
                 
 
             };
@@ -95,7 +96,9 @@ namespace backend.Controllers
                 Username = registerDTO.Username,
                 Email = registerDTO.Email,
                 Password = registerDTO.Password ,
-                ConfirmPassword = registerDTO.ConfirmPassword
+                ConfirmPassword = registerDTO.ConfirmPassword,
+                UserId = registerDTO.UserId
+                
             };
 
             // Add user to the database

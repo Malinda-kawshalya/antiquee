@@ -5,6 +5,7 @@ namespace backend.Models.Entities{
         public Guid Id {get; set;}
 
         public required decimal Amount {get; set;}
+        public required decimal BidderId {get; set;}
         public required decimal UserId {get; set;}
         public required DateTime BidTime {get; set;}
         
