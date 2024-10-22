@@ -2,15 +2,17 @@ import React from 'react';
 import './Css/Home.css'; // Import your CSS file for styling
 import Carousel from 'react-bootstrap/Carousel'; // Import Bootstrap Carousel
 import 'bootstrap/dist/css/bootstrap.min.css'; // Make sure to import Bootstrap CSS
+import image2 from './Images/caro3.png';
+import image3 from './Images/caro2.png';
+import art from './Images/art.jpeg';
 import Footer from './Footer'; 
 import image1 from './Images/caro4.png';
-import image2 from './Images/vintage art.jpeg';
 
 const Home = () => {
   // Sample data for featured auctions, categories, and top-selling items
   const featuredAuctions = [
     { id: 1, title: 'Vintage Artwork', image: image2 },
-    { id: 2, title: 'Antique Furniture', image: image2 },
+    { id: 2, title: 'Antique Furniture', image: image3 },
     { id: 3, title: 'Rare Coins', image: image2},
   ];
 
@@ -23,7 +25,7 @@ const Home = () => {
   ];
 
   const topSellingItems = [
-    { id: 1, title: 'Golden Necklace', image: image2 },
+    { id: 1, title: 'Golden Necklace', image: 'path_to_top_item_image1.jpg' },
     { id: 2, title: 'Collectible Stamps', image: 'path_to_top_item_image2.jpg' },
     { id: 3, title: 'Vintage Watch', image: 'path_to_top_item_image3.jpg' },
   ];

@@ -1,6 +1,6 @@
-// src/App.js
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import Header from './Header';
 import Footer from './Footer';
 import Home from './Home';
@@ -11,6 +11,9 @@ import Profile from './Profile';
 import Login from './Login';
 import TermsAndPrivacy from './TermsAndPrivacy';
 import SignUp from './SignUp';
+import AuctionDetail from './AuctionDetail'; 
+
+
 const App = () => {
   return (
     <Router>
@@ -22,10 +25,11 @@ const App = () => {
         <Route path="/contact" element={<Contact />} />  {/* Route for Contact Page */}
         <Route path="/profile" element={<Profile />} />  {/* Route for My Profile Page */}
         <Route path="/login" element={<Login />} />      {/* Route for Login Page */}
-        <Route path="/terms-and-privacy" element={<TermsAndPrivacy />} />
-        <Route path="/SignUp" element={<SignUp />} />
+        <Route path="/terms-and-privacy" element={<TermsAndPrivacy />} /> {/* Route for Terms & Privacy */}
+        <Route path="/signup" element={<SignUp />} />   {/* Route for Sign Up Page */}
+        <Route path="/AuctionDetail" element={<AuctionDetail />} />  {/* Route for Auction Detail Page */}
       </Routes>
-      <Footer />
+      <Footer />  {/* Include the Footer */}
     </Router>
   );
 };
