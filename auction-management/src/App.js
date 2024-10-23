@@ -11,8 +11,8 @@ import Profile from './Profile';
 import Login from './Login';
 import TermsAndPrivacy from './TermsAndPrivacy';
 import SignUp from './SignUp';
-import AuctionDetail from './AuctionDetail'; 
-
+import AuctionDetail from './AuctionDetail';
+import CreateAuction from './CreateAuction';  // Import the CreateAuction component
 
 const App = () => {
   return (
@@ -27,7 +27,8 @@ const App = () => {
         <Route path="/login" element={<Login />} />      {/* Route for Login Page */}
         <Route path="/terms-and-privacy" element={<TermsAndPrivacy />} /> {/* Route for Terms & Privacy */}
         <Route path="/signup" element={<SignUp />} />   {/* Route for Sign Up Page */}
-        <Route path="/AuctionDetail" element={<AuctionDetail />} />  {/* Route for Auction Detail Page */}
+        <Route path="/auction-detail" element={<AuctionDetail />} />  {/* Route for Auction Detail Page */}
+        <Route path="/create-auction" element={<CreateAuction />} />  {/* New Route for Create Auction Page */}
       </Routes>
       <Footer />  {/* Include the Footer */}
     </Router>
