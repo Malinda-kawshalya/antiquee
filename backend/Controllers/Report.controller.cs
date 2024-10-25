@@ -17,7 +17,7 @@ public class ReportController : ControllerBase
         _context = context;
     }
 
-    [HttpGet("AuctionPerformance")]
+   /* [HttpGet("AuctionPerformance")]
 public IActionResult GetAuctionPerformance()
 {
     var totalAuctions = _context.Auctions.Count();
@@ -26,7 +26,7 @@ public IActionResult GetAuctionPerformance()
   /*  var avgBidsPerAuction = _context.Auctions
                             .Where(a => a.Bids.Any())
                             .Select(a => a.Bids.Count)
-                            .Average();*/
+                            .Average();
 
     return Ok(new
     {
@@ -47,13 +47,13 @@ public IActionResult GetBidderActivity()
             TotalBidsPlaced = _context.Bids.Count(b => b.BidderId == user.UserId),
            /* TotalAmountSpent = _context.Bids
                                 .Where(b => b.BidderId == user.UserId && b.IsWinningBid)
-                                .Sum(b => b.Amount)*/
+                                .Sum(b => b.Amount)
         })
         .OrderByDescending(b => b.TotalBidsPlaced)
         .ToList();
 
-    return Ok(bidderActivity);
+    return Ok(bidderActivity);*/
 
 }
 }
-}
+

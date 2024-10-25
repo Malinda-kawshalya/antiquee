@@ -7,10 +7,10 @@ namespace backend.Models.Entities{
     public required string Description { get; set; }
     public decimal StartingPrice { get; set; }
     public DateTime StartTime { get; set; }
-    public DateTime EndTime { get; set; }
-    public DateTime StartDate { get; set; }
-    public DateTime EndDate { get; set; }
-    public required string Category { get; set; }
-    public int SellerId { get; set; } 
+     public decimal AuctionDuration { get; set; }
+    public required string Image { get; set; }
+   
+    //public required string Category { get; set; }
+    //public int SellerId { get; set; } 
     }
 }

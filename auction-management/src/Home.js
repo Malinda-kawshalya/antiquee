@@ -7,13 +7,14 @@ import image3 from './Images/caro2.png';
 import art from './Images/art.jpeg';
 import Footer from './Footer'; 
 import image1 from './Images/caro4.png';
+import { Link } from 'react-router-dom'; // Import Link from react-router-dom
 
 const Home = () => {
   // Sample data for featured auctions, categories, and top-selling items
   const featuredAuctions = [
     { id: 1, title: 'Vintage Artwork', image: image2 },
     { id: 2, title: 'Antique Furniture', image: image3 },
-    { id: 3, title: 'Rare Coins', image: image2},
+    { id: 3, title: 'Rare Coins', image: image2 },
   ];
 
   const categories = [
@@ -21,7 +22,6 @@ const Home = () => {
     'Antiques',
     'Collectibles',
     'Jewelry',
-    
   ];
 
   const topSellingItems = [
@@ -90,10 +90,13 @@ const Home = () => {
           ))}
         </div>
       </section>
-    
+
+      {/* Create Auction Button */}
+      <div className="create-auction-button text-center mt-4">
+        <Link to="/create-auction" className="btn btn-primary">Create Auction</Link>
+      </div>
+      
     </div>
- 
-    
   );
 };
 

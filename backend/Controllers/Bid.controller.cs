@@ -19,32 +19,29 @@ public class BidController : ControllerBase
 
     // Place a new bid
     [HttpPost]
-    public async Task<IActionResult> PlaceBid([FromBody] CreateBidDTO dto)
-    {
-        var auction = await _context.Auctions.FindAsync(dto.AuctionId);
-
-        if (auction == null)
-            return NotFound("Auction not found");
-
-            /*if (CreateBidDTO.Amount <= auction.Price)
-            return BadRequest("Bid must be higher than the current price");*/
-
-        var bid = new Bid
+        public async Task<ActionResult<Bid>> PostBid([FromBody] CreateBidDTO bidDTO)
         {
-            Id = Guid.NewGuid(),
-            Amount = dto.Amount,
-            BidTime = DateTime.UtcNow,
-            UserId = dto.UserId,
-            BidderId = dto.BidderId
-        };
+            // Validate the incoming bid data
+            if (bidDTO.BidAmount <= 0)
+            {
+                return BadRequest("Bid amount must be greater than zero.");
+            }
 
-        auction.StartingPrice = dto.Amount;
+            // Map CreateBidDTO to the Bid entity
+            var bid = new Bid
+            {
+                Id = Guid.NewGuid(), // Generate a new Guid for the bid
+                BidAmount = bidDTO.BidAmount,
+                BidTime = bidDTO.BidTime // Set the bid time from DTO
+            };
 
-        _context.Bids.Add(bid);
-        await _context.SaveChangesAsync();
+            // Add the bid to the database
+            _context.Bids.Add(bid);
+            await _context.SaveChangesAsync();
 
-        return Ok(bid);
-    }
+            // Return the created bid with a 201 Created response
+            return CreatedAtAction(nameof(PostBid), new { id = bid.Id }, bid);
+        }
 
     // Get all bids for an auction
     [HttpGet("{auctionId}")]

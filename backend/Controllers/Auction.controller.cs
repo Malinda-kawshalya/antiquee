@@ -24,23 +24,47 @@ namespace backend.Controllers
 
 
         [HttpPost("create")]
-        public IActionResult CreateAuction(CreateAuctionDTO dto){
-            var newAuction = new Auction(){
-               Title = dto.Title,
-               Description = dto.Description,
-               StartingPrice = dto.StartingPrice,
-               StartTime = dto.StartTime,
-               EndTime = dto.EndTime,
-               Category = dto.Category,
-               SellerId = dto.SellerId
+public async Task<IActionResult> CreateAuction([FromForm] CreateAuctionDTO dto)
+{
+    if (dto.Image == null || dto.Image.Length == 0)
+    {
+        return BadRequest("Image is required.");
+    }
 
-            };
+    // Define the directory path
+    var imagesDirectory = Path.Combine("wwwroot", "images");
 
-             dbContext.Auctions.Add(newAuction);
-             dbContext.SaveChanges();
+    // Check if the directory exists, if not, create it
+    if (!Directory.Exists(imagesDirectory))
+    {
+        Directory.CreateDirectory(imagesDirectory);
+    }
 
-             return Ok(newAuction);
-        }
+    // Save the image to the server
+    var imagePath = Path.Combine(imagesDirectory, dto.Image.FileName);
+
+    using (var stream = new FileStream(imagePath, FileMode.Create))
+    {
+        await dto.Image.CopyToAsync(stream);
+    }
+
+    // Create a new auction
+    var auction = new Auction
+    {
+        Title = dto.Title,
+        Description = dto.Description,
+        StartTime = dto.StartTime,
+        StartingPrice = dto.StartingPrice,
+        AuctionDuration = dto.AuctionDuration,
+        Image = $"/images/{dto.Image.FileName}" // Store relative path
+    };
+
+    dbContext.Auctions.Add(auction);
+    await dbContext.SaveChangesAsync();
+
+    return Ok(auction);
+}
+
 
          [HttpPut("update/{id}")]
     public IActionResult UpdateAuction(Guid id, UpdateAuctionDTO dto)
@@ -56,8 +80,7 @@ namespace backend.Controllers
         auction.Description = dto.Description;
         auction.StartingPrice = dto.StartingPrice;
         auction.StartTime = dto.StartTime;
-        auction.EndTime = dto.EndTime;
-        auction.Category = dto.Category;
+        auction.AuctionDuration = dto.AuctionDuration;
 
         dbContext.SaveChanges();
 

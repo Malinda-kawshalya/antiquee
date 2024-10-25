@@ -1,8 +1,6 @@
-// src/AuctionListings.js
 import React, { useState } from 'react';
 import './Css/AuctionListings.css'; // Import CSS for styling
 import { Link } from 'react-router-dom';
-import BidNow from './BidNow';
 
 const AuctionListings = () => {
   // Sample auction data (replace with real data from an API or backend)
@@ -10,7 +8,6 @@ const AuctionListings = () => {
     { id: 1, title: 'Vintage Car', price: 10000, category: 'Vehicles', closingTime: '2024-10-10' },
     { id: 2, title: 'Antique Jewelry', price: 5000, category: 'Jewelry', closingTime: '2024-09-30' },
     { id: 3, title: 'Modern Art', price: 2000, category: 'Art', closingTime: '2024-09-29' },
-    // Add more items...
   ];
 
   const [searchTerm, setSearchTerm] = useState('');
@@ -51,7 +48,6 @@ const AuctionListings = () => {
           <option value="Vehicles">Vehicles</option>
           <option value="Jewelry">Jewelry</option>
           <option value="Art">Art</option>
-          {/* Add more categories as needed */}
         </select>
 
         <select onChange={(e) => setSortOption(e.target.value)}>
@@ -63,17 +59,16 @@ const AuctionListings = () => {
 
       {/* Display Auction Items */}
       <div className="auction-items">
-  {paginatedItems.map((item) => (
-    <div key={item.id} className="auction-item">
-      <h3>{item.title}</h3>
-      <p>Price: ${item.price}</p>
-      <p>Category: {item.category}</p>
-      <p>Closing Time: {new Date(item.closingTime).toLocaleDateString()}</p>
-      <Link to={`/BidNow/${item.id}`} className="bid-now-button">Bid Now</Link>
-    </div>
-  ))}
-</div>
-
+        {paginatedItems.map((item) => (
+          <div key={item.id} className="auction-item">
+            <h3>{item.title}</h3>
+            <p>Price: ${item.price}</p>
+            <p>Category: {item.category}</p>
+            <p>Closing Time: {new Date(item.closingTime).toLocaleDateString()}</p>
+            <Link to="/auction-detail" className="bid-now-button">Bid Now</Link>
+          </div>
+        ))}
+      </div>
 
       {/* Pagination Controls */}
       <div className="pagination">
@@ -90,6 +85,11 @@ const AuctionListings = () => {
         >
           Next
         </button>
+      </div>
+
+      {/* Auction Results Button */}
+      <div className="Bid-Management text-center mt-4">
+        <Link to="/bid-management" className="btn btn-primary">My Bids</Link>
       </div>
     </div>
   );

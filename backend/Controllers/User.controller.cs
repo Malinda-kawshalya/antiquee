@@ -37,7 +37,7 @@ namespace backend.Controllers
                 ConfirmPassword = dto.ConfirmPassword,
                 Username = dto.Username,
                 Password = dto.Password,
-                UserId = dto.UserId
+                
                 
 
             };
@@ -97,7 +97,7 @@ namespace backend.Controllers
                 Email = registerDTO.Email,
                 Password = registerDTO.Password ,
                 ConfirmPassword = registerDTO.ConfirmPassword,
-                UserId = registerDTO.UserId
+                
                 
             };
 

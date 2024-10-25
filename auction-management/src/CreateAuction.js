@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './Css/CreateAuction.css'; // Include additional custom CSS if needed
+import axios from 'axios'; // Use Axios for easier API requests
 
 const CreateAuction = () => {
   const [title, setTitle] = useState('');
@@ -8,26 +9,45 @@ const CreateAuction = () => {
   const [startingPrice, setStartingPrice] = useState('');
   const [auctionDuration, setAuctionDuration] = useState('');
   const [image, setImage] = useState(null);
+  const [loading, setLoading] = useState(false);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     // Simple validation
-    if (!title || !description || !startingPrice || !auctionDuration) {
+    if (!title || !description || !startingPrice || !auctionDuration || !image) {
       alert('Please fill in all fields.');
       return;
     }
 
-    // Logic for form submission can be added here
-    // This is where you'll typically handle the API call to create the auction
-    alert(`Auction Created: ${title} for ${startingPrice} GBP`);
+    // Create form data to send to the server
+    const formData = new FormData();
+    formData.append('Title', title);
+    formData.append('Description', description);
+    formData.append('StartingPrice', startingPrice);
+    formData.append('AuctionDuration', auctionDuration);
+    formData.append('Image', image); // Append image file
 
-    // Reset form after submission
-    setTitle('');
-    setDescription('');
-    setStartingPrice('');
-    setAuctionDuration('');
-    setImage(null);
+    try {
+      setLoading(true);
+      const response = await axios.post('http://localhost:5140/api/Auction/create', formData, {
+        headers: {
+          'Content-Type': 'multipart/form-data',
+        },
+      });
+      alert('Auction Created Successfully');
+    } catch (error) {
+      console.error('There was an error creating the auction:', error);
+      alert('Failed to create the auction');
+    } finally {
+      setLoading(false);
+      // Reset form after submission
+      setTitle('');
+      setDescription('');
+      setStartingPrice('');
+      setAuctionDuration('');
+      setImage(null);
+    }
   };
 
   return (
@@ -96,10 +116,13 @@ const CreateAuction = () => {
             id="itemImage"
             onChange={(e) => setImage(e.target.files[0])}
             accept="image/*"
+            required
           />
         </div>
 
-        <button type="submit" className="btn btn-primary w-100">Create Auction</button>
+        <button type="submit" className="btn btn-primary w-100" disabled={loading}>
+          {loading ? 'Creating Auction...' : 'Create Auction'}
+        </button>
       </form>
     </div>
   );
