@@ -16,6 +16,7 @@ import CreateAuction from './CreateAuction';  // Import the CreateAuction compon
 import BidManagement from './BidManagement';  // Import the BidManagement component
 import AuctionResults from './AuctionResults';
 import PaymentCheckout from './PaymentCheckout';
+import Report from './Report';
 
 const App = () => {
   return (
@@ -35,6 +36,7 @@ const App = () => {
         <Route path="/bid-management" element={<BidManagement />} />  {/* New Route for Bid Management Page */}
         <Route path="/auction-results" element={<AuctionResults />} />
         <Route path="/payment-checkout" element={<PaymentCheckout />} />
+        <Route path="/report" element={<Report/>}/>
       </Routes>
       <Footer />  {/* Include the Footer */}
     </Router>

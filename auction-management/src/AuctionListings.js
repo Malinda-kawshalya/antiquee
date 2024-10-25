@@ -91,6 +91,11 @@ const AuctionListings = () => {
       <div className="Bid-Management text-center mt-4">
         <Link to="/bid-management" className="btn btn-primary">My Bids</Link>
       </div>
+
+      {/* Report Page Button */}
+      <div className="Report-Page text-center mt-4">
+        <Link to="/report" className="btn btn-secondary">Go to Report</Link>
+      </div>
     </div>
   );
 };

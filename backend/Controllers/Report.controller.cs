@@ -17,42 +17,32 @@ public class ReportController : ControllerBase
         _context = context;
     }
 
-   /* [HttpGet("AuctionPerformance")]
-public IActionResult GetAuctionPerformance()
-{
-    var totalAuctions = _context.Auctions.Count();
-    var completedAuctions = _context.Auctions.Count(a => a.EndDate <= DateTime.UtcNow);
-    var ongoingAuctions = _context.Auctions.Count(a => a.StartDate <= DateTime.UtcNow && a.EndDate > DateTime.UtcNow);
-  /*  var avgBidsPerAuction = _context.Auctions
-                            .Where(a => a.Bids.Any())
-                            .Select(a => a.Bids.Count)
-                            .Average();
-
-    return Ok(new
-    {
-        TotalAuctions = totalAuctions,
-        CompletedAuctions = completedAuctions,
-        OngoingAuctions = ongoingAuctions,
-        //AvgBidsPerAuction = avgBidsPerAuction
-    });
-}
-[HttpGet("BidderActivity")]
-public IActionResult GetBidderActivity()
-{
-    var bidderActivity = _context.Users
-        .Select(user => new
+   [HttpGet("AuctionReport")]
+        public async Task<ActionResult<IEnumerable<AuctionReportDTO>>> GetAuctionReport()
         {
-            BidderId = user.Id,
-            Username = user.Username,
-            TotalBidsPlaced = _context.Bids.Count(b => b.BidderId == user.UserId),
-           /* TotalAmountSpent = _context.Bids
-                                .Where(b => b.BidderId == user.UserId && b.IsWinningBid)
-                                .Sum(b => b.Amount)
-        })
-        .OrderByDescending(b => b.TotalBidsPlaced)
-        .ToList();
+            // Retrieve auctions with associated bids
+            var auctionsWithBids = await _context.Auctions
+                .Include(a => a.Bids) // Include the related bids
+                .Select(a => new AuctionReportDTO
+                {
+                    AuctionId = a.Id,
+                    Title = a.Title,
+                    Description = a.Description,
+                    StartingPrice = a.StartingPrice,
+                    StartTime = a.StartTime,
+                    AuctionDuration = a.AuctionDuration,
+                    Image = a.Image,
+                    Bids = a.Bids.Select(b => new CreateBidDTO
+                    {
+                        BidAmount = b.BidAmount,
+                        BidTime = b.BidTime
+                    }).ToList()
+                })
+                .ToListAsync();
 
-    return Ok(bidderActivity);*/
+            // Return the report as JSON
+            return Ok(auctionsWithBids);
+        }
 
 }
 }

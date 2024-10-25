@@ -103,4 +103,18 @@
     font-size: 1.2em;
     color: #333;
   }
+  /* Styles for the "Go to Report" button */
+.btn-secondary {
+  background-color: #795757;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  text-decoration: none;
+}
+
+.btn-secondary:hover {
+  background-color: #5a6268;
+}
+
   
