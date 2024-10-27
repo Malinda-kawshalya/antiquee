@@ -64,9 +64,9 @@ const Contact = () => {
 
         <div className="contact-info">
           <h3>Contact Information</h3>
-          <p><strong>Email:</strong> support@auctionhouse.com</p>
-          <p><strong>Phone:</strong> +1 (800) 123-4567</p>
-          <p><strong>Address:</strong> 123 Auction Lane, New York, NY 10001</p>
+          <p><strong>Email:</strong> support@auntiquee.com</p>
+          <p><strong>Phone:</strong> 070 11111 50</p>
+          <p><strong>Address:</strong> 75/1 ,Pitipana ,Homagama</p>
         </div>
       </div>
     </div>

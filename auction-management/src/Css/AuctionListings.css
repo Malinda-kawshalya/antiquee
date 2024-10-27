@@ -142,3 +142,10 @@
 .btn-secondary:hover {
   background-color: #5a6268; /* Darker shade for hover effect */
 }
+
+.auction-item-image {
+  width: 100%; /* Makes the image responsive */
+  height: auto; /* Maintains aspect ratio */
+  border-radius: 10px; /* Adds rounded corners */
+  margin-bottom: 15px; /* Space between image and text */
+}

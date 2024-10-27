@@ -1,17 +1,15 @@
 // src/AboutUs.js
 import React from 'react';
 import './Css/About.css'; // Import your CSS file for styling
+import malinda from './Images/malinda.JPG';
 
 const AboutUs = () => {
   const teamMembers = [
-    { id: 1, name: 'Alice Johnson', role: 'Founder & CEO', image: 'path_to_image1.jpg' },
-    { id: 2, name: 'Bob Smith', role: 'CTO', image: 'path_to_image2.jpg' },
-    { id: 3, name: 'Charlie Brown', role: 'Lead Designer', image: 'path_to_image3.jpg' },
-    { id: 4, name: 'Daisy Miller', role: 'Marketing Manager', image: 'path_to_image4.jpg' },
-    { id: 5, name: 'Edward Johnson', role: 'Product Manager', image: 'path_to_image5.jpg' },
-    { id: 6, name: 'Fiona White', role: 'Developer', image: 'path_to_image6.jpg' },
-    { id: 7, name: 'George Brown', role: 'Sales Manager', image: 'path_to_image7.jpg' },
-    { id: 8, name: 'Hannah Davis', role: 'Customer Support', image: 'path_to_image8.jpg' },
+    { id: 1, name: 'Malinda Kawshalya', role: 'Underrgraduate' , image:malinda },
+    { id: 2, name: 'Nithini Jyathilaka', role: 'Underrgraduate' , image: 'path_to_image2.jpg' },
+    { id: 3, name: 'Ravindu Pahan', role: 'Underrgraduate', image: 'path_to_image3.jpg' },
+    { id: 4, name: 'Chirath Bupa', role: 'Underrgraduate', image: 'path_to_image4.jpg' },
+    
   ];
 
   return (

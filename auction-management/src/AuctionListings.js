@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import "./Css/AuctionListings.css"; // Import CSS for styling
 import { Link } from "react-router-dom";
 import axios from "axios";
+import art from './Images/art.jpeg';
 
 // Function to create dummy auction items
 const createDummyData = () => {
@@ -17,6 +18,8 @@ const createDummyData = () => {
         price: (Math.random() * 100).toFixed(2),
         category: category,
         closingTime: new Date(Date.now() + Math.random() * 604800000).toISOString(), // random closing time within a week
+        image: `https://via.placeholder.com/150?text=${category}+Item+${i}`, // Placeholder image URL
+        description: `This is a brief description of ${category} Item ${i}.` // Sample description
       });
     }
   }
@@ -70,9 +73,7 @@ const AuctionListings = () => {
   }, []);
 
   return (
-    
     <div className="auction-listings-container">
-
       <div className="action-buttons">
         <Link to="/bid-management" className="btn btn-secondary">
           My Bids
@@ -91,16 +92,13 @@ const AuctionListings = () => {
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
         />
-
         <select onChange={(e) => setCategoryFilter(e.target.value)}>
           <option value="">All Categories</option>
-          <option value="Vehicles">Vehicles</option>
           <option value="Jewelry">Jewelry</option>
           <option value="Art">Art</option>
           <option value="Antiques">Antiques</option>
           <option value="Collectibles">Collectibles</option>
         </select>
-
         <select onChange={(e) => setSortOption(e.target.value)}>
           <option value="">Sort By</option>
           <option value="price">Price</option>
@@ -108,14 +106,13 @@ const AuctionListings = () => {
         </select>
       </div>
 
-      {/* Action Buttons in the Top Right Corner */}
-      
-
       {/* Display Auction Items */}
       <div className="auction-items">
         {paginatedItems.map((item) => (
           <div key={item.id} className="auction-item">
+            <img src={art} alt={item.title} className="auction-item-image" /> {/* Add image */}
             <h3>{item.title}</h3>
+            <p>description</p> {/* Add description */}
             <p>Price: ${item.price}</p>
             <p>Category: {item.category}</p>
             <p>
