@@ -8,7 +8,7 @@
   
   h1 {
     text-align: center;
-    color: #333;
+    color: #fcfbfb;
   }
   
   .report-table {
@@ -25,7 +25,7 @@
   
   .report-table th {
     background-color: #f4f4f4;
-    color: #333;
+    color: #f0e3e3;
   }
   
   .report-table tr:nth-child(even) {

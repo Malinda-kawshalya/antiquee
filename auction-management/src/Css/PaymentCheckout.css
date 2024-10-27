@@ -1,37 +1,101 @@
+/* PaymentCheckout.css */
+
+/* Container styling */
 .payment-checkout-container {
-    max-width: 700px;
-    margin: auto;
-  }
-  
-  h2 {
-    font-weight: bold;
-    color: #007bff;
-  }
-  
-  .checkout-details {
-    background-color: #f8f9fa;
-    padding: 20px;
-    border-radius: 8px;
-  }
-  
-  .payment-form {
-    background-color: #f8f9fa;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
-  }
-  
-  .btn-primary {
-    background-color: #007bff;
-    border: none;
-  }
-  
-  .btn-primary:hover {
-    background-color: #0056b3;
-  }
-  
-  .alert-success {
-    margin-top: 20px;
-    font-size: 18px;
-  }
-  
+  max-width: 600px;
+  background-color: #ffffff;
+  border-radius: 8px;
+}
+
+/* Header styling */
+.payment-checkout-container h2 {
+  font-size: 1.8rem;
+  color: #333;
+  font-weight: 700;
+}
+
+/* Checkout details box */
+.checkout-details {
+  background-color: #f8f9fa;
+  border: 1px solid #dee2e6;
+  border-radius: 8px;
+  padding: 1.5rem;
+  color: #495057;
+}
+
+.checkout-details h4 {
+  font-size: 1.4rem;
+  color: #343a40;
+  margin-bottom: 1rem;
+}
+
+/* Payment success message styling */
+.alert-success {
+  font-size: 1.1rem;
+  font-weight: 600;
+  background-color: #d4edda;
+  color: #155724;
+  border: none;
+  border-radius: 8px;
+  padding: 1rem;
+}
+
+/* Form group styling */
+.payment-form .form-group label {
+  font-weight: 600;
+  color: #495057;
+}
+
+.payment-form input[type="text"],
+.payment-form select {
+  height: 45px;
+  font-size: 1rem;
+  padding: 10px;
+  border-radius: 6px;
+  border: 1px solid #ced4da;
+}
+
+.payment-form .form-group.mb-4 {
+  margin-bottom: 1.5rem;
+}
+
+/* Button styling */
+.btn-primary.btn-block {
+  background-color: #007bff;
+  border: none;
+  padding: 12px;
+  font-size: 1rem;
+  font-weight: 600;
+  border-radius: 6px;
+}
+
+.btn-primary.btn-block:hover {
+  background-color: #0056b3;
+}
+
+/* Payment method selection styling */
+.form-group.mb-4 label {
+  font-size: 1.1rem;
+  color: #495057;
+  margin-right: 15px;
+  cursor: pointer;
+}
+
+.form-group.mb-4 input[type="radio"] {
+  margin-right: 5px;
+}
+
+/* PayPal section placeholder */
+.paypal-section {
+  padding: 20px;
+  background-color: #f1f1f1;
+  border: 1px dashed #ced4da;
+  border-radius: 8px;
+  text-align: center;
+}
+
+.paypal-section p {
+  color: #343a40;
+  font-size: 1.1rem;
+  font-weight: 500;
+}

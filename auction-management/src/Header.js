@@ -1,12 +1,17 @@
-import React, { useState } from 'react'; // Make sure useState is imported
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import './Css/Header.css'; // Import your CSS file
+import './Css/Header.css';
 
 const Header = () => {
   const [menuActive, setMenuActive] = useState(false);
+  const [dropdownActive, setDropdownActive] = useState(false);
 
   const toggleMenu = () => {
     setMenuActive(!menuActive);
+  };
+
+  const toggleDropdown = () => {
+    setDropdownActive(!dropdownActive);
   };
 
   return (
@@ -17,9 +22,19 @@ const Header = () => {
       <nav className={`navbar ${menuActive ? 'active' : ''}`}>
         <ul>
           <li><Link to="/">Home</Link></li>
-          <li><Link to="/auctions">Auctions</Link></li>
-          <li><Link to="/About">About Us</Link></li>
-          <li><Link to="/Contact">Contact</Link></li>
+          <li className="dropdown">
+            <button className="dropdown-toggle" onClick={toggleDropdown}>
+              Auctions
+            </button>
+            {dropdownActive && (
+              <ul className="dropdown-menu">
+                <li><Link to="/auctions">All Auctions</Link></li>
+                <li><Link to="/create-auction">Create Auction</Link></li>
+              </ul>
+            )}
+          </li>
+          <li><Link to="/about">About Us</Link></li>
+          <li><Link to="/contact">Contact</Link></li>
           <li><Link to="/login">Login</Link></li>
         </ul>
       </nav>
