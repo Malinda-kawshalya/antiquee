@@ -2,19 +2,22 @@ import React from 'react';
 import './Css/Home.css'; // Import your CSS file for styling
 import Carousel from 'react-bootstrap/Carousel'; // Import Bootstrap Carousel
 import 'bootstrap/dist/css/bootstrap.min.css'; // Make sure to import Bootstrap CSS
-import image2 from './Images/caro3.png';
-import image3 from './Images/caro2.png';
-import art from './Images/art.jpeg';
 import Footer from './Footer'; 
 import image1 from './Images/caro4.png';
 import { Link } from 'react-router-dom'; // Import Link from react-router-dom
+import goldnec from './Images/goldneck.png';
+import watch from './Images/watch.png';
+import stamp from './Images/stamp.png';
+import coins from './Images/coins.png';
+import vintageart from './Images/vintageart.png';
+import furniture from './Images/furniture.png';
 
 const Home = () => {
   // Sample data for featured auctions, categories, and top-selling items
   const featuredAuctions = [
-    { id: 1, title: 'Vintage Artwork', image: image2 },
-    { id: 2, title: 'Antique Furniture', image: image3 },
-    { id: 3, title: 'Rare Coins', image: image2 },
+    { id: 1, title: 'Vintage Artwork', image:vintageart },
+    { id: 2, title: 'Antique Furniture', image:furniture  },
+    { id: 3, title: 'Rare Coins', image:coins },
   ];
 
   const categories = [
@@ -25,9 +28,9 @@ const Home = () => {
   ];
 
   const topSellingItems = [
-    { id: 1, title: 'Golden Necklace', image: 'path_to_top_item_image1.jpg' },
-    { id: 2, title: 'Collectible Stamps', image: 'path_to_top_item_image2.jpg' },
-    { id: 3, title: 'Vintage Watch', image: 'path_to_top_item_image3.jpg' },
+    { id: 1, title: 'Golden Necklace', image:goldnec },
+    { id: 2, title: 'Collectible Stamps', image:stamp },
+    { id: 3, title: 'Vintage Watches', image:watch },
   ];
 
   return (
@@ -90,11 +93,6 @@ const Home = () => {
           ))}
         </div>
       </section>
-
-      {/* Create Auction Button */}
-      <div className="create-auction-button text-center mt-4">
-        <Link to="/create-auction" className="btn btn-primary">Create Auction</Link>
-      </div>
       
     </div>
   );

@@ -3,14 +3,33 @@ import "./Css/AuctionListings.css"; // Import CSS for styling
 import { Link } from "react-router-dom";
 import axios from "axios";
 
-const AuctionListings = () => {
+// Function to create dummy auction items
+const createDummyData = () => {
+  const categories = ["Art", "Antiques", "Collectibles", "Jewelry"];
+  const itemsPerCategory = 51; // 204 items total
+  let items = [];
 
+  for (let category of categories) {
+    for (let i = 1; i <= itemsPerCategory; i++) {
+      items.push({
+        id: items.length + 1,
+        title: `${category} Item ${i}`,
+        price: (Math.random() * 100).toFixed(2),
+        category: category,
+        closingTime: new Date(Date.now() + Math.random() * 604800000).toISOString(), // random closing time within a week
+      });
+    }
+  }
+  return items;
+};
+
+const AuctionListings = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [sortOption, setSortOption] = useState("");
   const [categoryFilter, setCategoryFilter] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 5;
-  const [auctionItems, setAuctionItems] = useState([]);
+  const [auctionItems, setAuctionItems] = useState(createDummyData()); // Use dummy data here
 
   // Filter and sort auctions
   const filteredItems = auctionItems
@@ -33,13 +52,13 @@ const AuctionListings = () => {
     currentPage * itemsPerPage
   );
 
+  // This function can be removed if you're using dummy data only
   const getAllAuctionList = async () => {
     console.log("Get all listings");
     await axios
       .get("http://localhost:5140/api/Auction/all")
       .then((res) => {
         setAuctionItems(res.data);
-       
       })
       .catch((err) => {
         console.log(err);
@@ -47,11 +66,21 @@ const AuctionListings = () => {
   };
 
   useEffect(() => {
-    getAllAuctionList();
+    getAllAuctionList(); // Uncomment this line if you want to fetch from API later
   }, []);
 
   return (
+    
     <div className="auction-listings-container">
+
+      <div className="action-buttons">
+        <Link to="/bid-management" className="btn btn-secondary">
+          My Bids
+        </Link>
+        <Link to="/report" className="btn btn-secondary">
+          Go to Report
+        </Link>
+      </div>
       <h1>Auction Listings</h1>
 
       {/* Search, Filter, and Sort Options */}
@@ -68,6 +97,8 @@ const AuctionListings = () => {
           <option value="Vehicles">Vehicles</option>
           <option value="Jewelry">Jewelry</option>
           <option value="Art">Art</option>
+          <option value="Antiques">Antiques</option>
+          <option value="Collectibles">Collectibles</option>
         </select>
 
         <select onChange={(e) => setSortOption(e.target.value)}>
@@ -76,6 +107,9 @@ const AuctionListings = () => {
           <option value="closingTime">Closing Time</option>
         </select>
       </div>
+
+      {/* Action Buttons in the Top Right Corner */}
+      
 
       {/* Display Auction Items */}
       <div className="auction-items">
@@ -111,20 +145,6 @@ const AuctionListings = () => {
         >
           Next
         </button>
-      </div>
-
-      {/* Auction Results Button */}
-      <div className="Bid-Management text-center mt-4">
-        <Link to="/bid-management" className="btn btn-primary">
-          My Bids
-        </Link>
-      </div>
-
-      {/* Report Page Button */}
-      <div className="Report-Page text-center mt-4">
-        <Link to="/report" className="btn btn-secondary">
-          Go to Report
-        </Link>
       </div>
     </div>
   );
