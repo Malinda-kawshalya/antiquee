@@ -17,6 +17,7 @@ import BidManagement from './BidManagement';  // Import the BidManagement compon
 import AuctionResults from './AuctionResults';
 import PaymentCheckout from './PaymentCheckout';
 import Report from './Report';
+import AdminDashboard from './admindashboard';
 
 const App = () => {
   return (
@@ -37,6 +38,8 @@ const App = () => {
         <Route path="/auction-results" element={<AuctionResults />} />
         <Route path="/payment-checkout" element={<PaymentCheckout />} />
         <Route path="/report" element={<Report/>}/>
+        <Route path="/admindashboard" element={<AdminDashboard/>}/>
+
       </Routes>
       <Footer />  {/* Include the Footer */}
     </Router>
