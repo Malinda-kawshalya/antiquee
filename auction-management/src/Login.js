@@ -1,9 +1,12 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios'; // Import Axios for making HTTP requests
 import './Css/Login.css';
 
+
 const Login = () => {
+
+  const navigate = useNavigate();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState(null); // For displaying error messages
@@ -18,8 +21,8 @@ const Login = () => {
       const response = await axios.post('http://localhost:5140/api/User/login', { email, password }); // Replace with your backend URL
       console.log('Login successful:', response.data);
       setSuccess('Login successful!'); // Set success message
-      // Save JWT token or handle login session as needed
-      localStorage.setItem('token', response.data.token);
+      localStorage.setItem('userId', response.data.user.id)
+      navigate('/');
     } catch (error) {
       setError(error.response?.data?.message || 'Invalid email or password'); // Show error message
     }

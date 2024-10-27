@@ -10,7 +10,7 @@ namespace backend.Models.Entities{
 
         public required string Email {get; set;}
        public required string ConfirmPassword { get; set; }
-      // public required decimal UserId {get; set;}
+      
         
     }
 

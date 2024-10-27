@@ -2,8 +2,10 @@ import React, { useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './Css/CreateAuction.css'; // Include additional custom CSS if needed
 import axios from 'axios'; // Use Axios for easier API requests
+import { Link, useNavigate } from 'react-router-dom';
 
 const CreateAuction = () => {
+  const navigate = useNavigate();
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
   const [startingPrice, setStartingPrice] = useState('');
@@ -13,6 +15,15 @@ const CreateAuction = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    const userId = localStorage.getItem('userId');
+
+    if(localStorage.getItem('userId') == null || localStorage.getItem('userId') == '' || localStorage.getItem('userId') == undefined)
+    {
+      alert('You need to login to create an auction')
+      navigate('/login');
+      return;
+    }
 
     // Simple validation
     if (!title || !description || !startingPrice || !auctionDuration || !image) {
@@ -26,6 +37,7 @@ const CreateAuction = () => {
     formData.append('Description', description);
     formData.append('StartingPrice', startingPrice);
     formData.append('AuctionDuration', auctionDuration);
+    formData.append('UserId', userId);
     formData.append('Image', image); // Append image file
 
     try {

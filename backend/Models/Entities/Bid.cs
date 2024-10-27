@@ -1,3 +1,5 @@
+using System.Text.Json.Serialization;
+
 namespace backend.Models.Entities
 {
     public class Bid
@@ -6,8 +8,13 @@ namespace backend.Models.Entities
         public decimal BidAmount { get; set; }
         public DateTime BidTime { get; set; }
 
+        public Guid? UserId { get; set; }
         // Foreign key reference to Auction
         public Guid AuctionId { get; set; }
-        public  Auction Auction { get; set; }  // Navigation property for the related auction
+        [JsonIgnore] // Prevent serialization of the auction in the bid
+        public virtual Auction Auction { get; set; }
+
+        [JsonIgnore] // Optionally prevent serialization of the User
+        public virtual User User { get; set; } // Navigation property for the related auction
     }
 }

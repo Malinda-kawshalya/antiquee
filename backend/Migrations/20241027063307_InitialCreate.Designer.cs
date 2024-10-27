@@ -12,8 +12,8 @@ using backend.Data;
 namespace backend.Migrations
 {
     [DbContext(typeof(ApplicationDBContext))]
-    [Migration("20241025054831_AddAuctionIdToBids")]
-    partial class AddAuctionIdToBids
+    [Migration("20241027063307_InitialCreate")]
+    partial class InitialCreate
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -32,6 +32,9 @@ namespace backend.Migrations
                         .HasColumnType("char(36)");
 
                     b.Property<decimal>("AuctionDuration")
+                        .HasColumnType("decimal(65,30)");
+
+                    b.Property<decimal?>("CurrentPrice")
                         .HasColumnType("decimal(65,30)");
 
                     b.Property<string>("Description")

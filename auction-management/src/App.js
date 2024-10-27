@@ -31,7 +31,7 @@ const App = () => {
         <Route path="/login" element={<Login />} />      {/* Route for Login Page */}
         <Route path="/terms-and-privacy" element={<TermsAndPrivacy />} /> {/* Route for Terms & Privacy */}
         <Route path="/signup" element={<SignUp />} />   {/* Route for Sign Up Page */}
-        <Route path="/auction-detail" element={<AuctionDetail />} />  {/* Route for Auction Detail Page */}
+        <Route path="/auction-detail/:id" element={<AuctionDetail />} />  {/* Route for Auction Detail Page */}
         <Route path="/create-auction" element={<CreateAuction />} />  {/* Route for Create Auction Page */}
         <Route path="/bid-management" element={<BidManagement />} />  {/* New Route for Bid Management Page */}
         <Route path="/auction-results" element={<AuctionResults />} />

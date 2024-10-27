@@ -1,69 +1,89 @@
-import React, { useState } from 'react';
-import { Carousel } from 'react-bootstrap'; // Import Carousel from react-bootstrap
-import './Css/AuctionDetail.css'; // Import the CSS file for modern styles
+import React, { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
+import { Carousel } from "react-bootstrap"; // Import Carousel from react-bootstrap
+import "./Css/AuctionDetail.css"; // Import the CSS file for modern styles
+import axios from "axios";
+import { Link, useNavigate } from 'react-router-dom';
 
 const AuctionDetail = () => {
-  // Dummy auction item data (replace with real data)
-  const auctionItem = {
-    id: 1, // Add the ID of the auction item
-    title: 'Vintage Watch',
-    description: 'A rare vintage watch from the 1960s in excellent condition.',
-    startingPrice: 500,
-    currentPrice: 750,
-    auctionEndTime: new Date().toLocaleString(),
-    bidHistory: [
-      { id: 1, bidder: 'John Doe', bid: 700, time: 'Oct 22, 2024 - 11:30 AM' },
-      { id: 2, bidder: 'Jane Smith', bid: 750, time: 'Oct 22, 2024 - 12:00 PM' },
-    ],
-    images: [
-      'path/to/image1.jpg', // Replace with actual image paths
-      'path/to/image2.jpg',
-      'path/to/image3.jpg',
-    ],
-  };
-
-  const [bid, setBid] = useState('');
-  const [bidHistory, setBidHistory] = useState(auctionItem.bidHistory);
+  const { id } = useParams();
+  const navigate = useNavigate();
+  const [bid, setBid] = useState("");
+  const [auctionItem, setAuctionItem] = useState({});
+  const [bids, setBids] = useState([]);
 
   const handleBidSubmit = async (e) => {
     e.preventDefault();
 
+    const userId = localStorage.getItem('userId');
+
+    if(localStorage.getItem('userId') == null || localStorage.getItem('userId') == '' || localStorage.getItem('userId') == undefined)
+    {
+      alert('You need to login to create a bid')
+      navigate('/login');
+      return;
+    }
+
+
+
     if (bid > auctionItem.currentPrice) {
       const newBid = {
-        auctionItemId: auctionItem.id,  // ID of the auction item
-        bidderName: 'New Bidder', // Replace this with the logged-in user's name or ID
+        auctionId: id,
+        bidderName: "New Bidder",
         bidAmount: bid,
         bidTime: new Date().toISOString(),
+        UserId: userId
       };
 
-      try {
-        const response = await fetch('http://localhost:5140/api/Bid', { // Your .NET API endpoint
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify(newBid),
+      await axios
+        .post("http://localhost:5140/api/Bid/create", newBid)
+        .then((res) => {
+          getBidList();
+          getAuctionDetail();
+        })
+        .catch((err) => {
+          console.log(err);
         });
-
-        if (response.ok) {
-          const result = await response.json();
-          setBidHistory([result, ...bidHistory]); // Update bid history with the new bid
-          setBid(''); // Clear the bid input
-        } else {
-          alert('Failed to submit the bid');
-        }
-      } catch (error) {
-        console.error('Error:', error);
-      }
     } else {
-      alert('Your bid must be higher than the current price.');
+      alert("Bid amount should greater than current price");
     }
   };
+
+  const getAuctionDetail = async () => {
+    await axios
+      .get(`http://localhost:5140/api/Auction/${id}`)
+      .then((res) => {
+        setAuctionItem(res.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
+  const getBidList = async () => {
+    await axios
+      .get(`http://localhost:5140/api/Bid/all/auction/${id}`)
+      .then((res) => {
+        setBids(res.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
+  const handlePrint = () => {
+    window.print();
+  };
+  
+  useEffect(() => {
+    getAuctionDetail();
+    getBidList();
+  }, []);
 
   return (
     <div className="auction-detail-container">
       {/* Carousel for item images */}
-      <Carousel className="mb-4">
+      {/* <Carousel className="mb-4">
         {auctionItem.images.map((image, index) => (
           <Carousel.Item key={index}>
             <img
@@ -73,22 +93,31 @@ const AuctionDetail = () => {
             />
           </Carousel.Item>
         ))}
-      </Carousel>
+      </Carousel> */}
 
       <div className="auction-item-details shadow-lg p-4 mb-5 bg-white rounded text-center">
         <h2>{auctionItem.title}</h2>
         <p>{auctionItem.description}</p>
-        <p><strong>Starting Price:</strong> ${auctionItem.startingPrice}</p>
-        <p><strong>Current Price:</strong> ${auctionItem.currentPrice}</p>
-        <p><strong>Auction End Time:</strong> {auctionItem.auctionEndTime}</p>
+        <p>
+          <strong>Starting Price:</strong> ${auctionItem.startingPrice}
+        </p>
+        <p>
+          <strong>Current Price:</strong> ${auctionItem.currentPrice}
+        </p>
+        <p>
+          <strong>Auction Start Time:</strong> {auctionItem.startTime}
+        </p>
       </div>
 
       <div className="bid-history-container text-center">
         <h3>Bid History</h3>
         <ul>
-          {bidHistory.map((bidItem) => (
+          {bids.map((bidItem) => (
             <li key={bidItem.id}>
-              <span><strong>{bidItem.bidder}</strong> bid ${bidItem.bid} on {bidItem.time}</span>
+              <span>
+                Bid ${bidItem.bidAmount} on {""}
+                {bidItem.bidTime}
+              </span>
             </li>
           ))}
         </ul>
@@ -105,8 +134,15 @@ const AuctionDetail = () => {
             className="form-control mb-3"
             required
           />
-          <button type="submit" className="btn btn-primary w-100">Place Bid</button>
+          <button type="submit" className="btn btn-primary w-100">
+            Place Bid
+          </button>
         </form>
+      </div>
+      <div className="text-center mt-4">
+        <button onClick={handlePrint} className="btn btn-secondary">
+          Print Auction Details and Bids
+        </button>
       </div>
     </div>
   );

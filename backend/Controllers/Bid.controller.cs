@@ -7,55 +7,88 @@ using Microsoft.EntityFrameworkCore;
 namespace backend.Controllers
 {
     [ApiController]
-[Route("api/[controller]")]
-public class BidController : ControllerBase
-{
-    private readonly ApplicationDBContext _context;
-
-    public BidController(ApplicationDBContext context)
+    [Route("api/[controller]")]
+    public class BidController : ControllerBase
     {
-        _context = context;
-    }
+        private readonly ApplicationDBContext _context;
 
-    // Place a new bid
-    [HttpPost]
-        public async Task<ActionResult<Bid>> PostBid([FromBody] CreateBidDTO bidDTO)
+        public BidController(ApplicationDBContext context)
         {
-            // Validate the incoming bid data
-            if (bidDTO.BidAmount <= 0)
-            {
-                return BadRequest("Bid amount must be greater than zero.");
-            }
-
-            // Map CreateBidDTO to the Bid entity
-            var bid = new Bid
-            {
-                Id = Guid.NewGuid(), // Generate a new Guid for the bid
-                BidAmount = bidDTO.BidAmount,
-                BidTime = bidDTO.BidTime // Set the bid time from DTO
-            };
-
-            // Add the bid to the database
-            _context.Bids.Add(bid);
-            await _context.SaveChangesAsync();
-
-            // Return the created bid with a 201 Created response
-            return CreatedAtAction(nameof(PostBid), new { id = bid.Id }, bid);
+            _context = context;
         }
 
-    // Get all bids for an auction
-    [HttpGet("{auctionId}")]
-    public async Task<IActionResult> GetBidsForAuction(Guid auctionId)
+        [HttpPost("create")]
+public async Task<ActionResult<Bid>> PostBid([FromBody] CreateBidDTO bidDTO)
+{
+    // Validate incoming data
+    if (bidDTO.BidAmount <= 0)
     {
-        var bids = await _context.Bids
-            .Where(b => b.Id == auctionId)
-            .ToListAsync();
-
-        return Ok(bids);
+        return BadRequest("Bid amount must be greater than zero.");
     }
 
+    if (bidDTO.AuctionId == Guid.Empty)
+    {
+        return BadRequest("AuctionId must be provided.");
+    }
 
+    // Check if the auction exists
+    var auction = await _context.Auctions
+        .FirstOrDefaultAsync(a => a.Id == bidDTO.AuctionId);
+
+    if (auction == null)
+    {
+        return NotFound("Auction not found.");
+    }
+
+    // Create a new bid entity
+    var bid = new Bid
+    {
+        Id = Guid.NewGuid(),
+        BidAmount = bidDTO.BidAmount,
+        BidTime = DateTime.UtcNow, 
+        AuctionId = bidDTO.AuctionId,
+        UserId = bidDTO.UserId
+    };
+
+  
+    if (bidDTO.BidAmount > auction.CurrentPrice)
+    {
+        auction.CurrentPrice = bidDTO.BidAmount; 
+    }
+    else
+    {
+        return BadRequest("Bid amount must be higher than the current auction price.");
+    }
+
+    // Add the bid to the database
+    _context.Bids.Add(bid);
+
+    // Mark the auction as modified
+    _context.Auctions.Update(auction); // Optional, as it’s being tracked
+
+    // Save changes
+    await _context.SaveChangesAsync();
+
+    // Return the created bid with a 201 Created response
+    return CreatedAtAction(nameof(PostBid), new { id = bid.Id }, bid);
 }
+
+
+
+
+        // Get all bids for an auction
+        [HttpGet("all/auction/{id}")]
+        public async Task<IActionResult> GetBidsForAuction(Guid id)
+        {
+            var bids = await _context.Bids
+                .Where(b => b.AuctionId == id)
+                .ToListAsync();
+
+            return Ok(bids);
+        }
+
+
+    }
 
 
 
