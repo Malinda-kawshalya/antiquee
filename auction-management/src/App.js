@@ -18,6 +18,9 @@ import AuctionResults from './AuctionResults';
 import PaymentCheckout from './PaymentCheckout';
 import Report from './Report';
 
+import SellerDashboard from './sellerDashboard';
+
+import AdminDashboard from './admindashboard';
 const App = () => {
   return (
     <Router>
@@ -37,6 +40,10 @@ const App = () => {
         <Route path="/auction-results" element={<AuctionResults />} />
         <Route path="/payment-checkout" element={<PaymentCheckout />} />
         <Route path="/report" element={<Report/>}/>
+
+        <Route path="/sellerDashboard" element={<SellerDashboard/>}/>
+
+        <Route path="/admindashboard" element={<AdminDashboard/>}/>
       </Routes>
       <Footer />  {/* Include the Footer */}
     </Router>

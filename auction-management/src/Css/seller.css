@@ -1,0 +1,14 @@
+.container {
+  margin-top: 20px;
+}
+
+.product-image {
+  width: 100px;
+  height: auto;
+  margin-bottom: 10px;
+}
+
+.img-thumbnail {
+  max-width: 200px;
+  margin-bottom: 10px;
+}
