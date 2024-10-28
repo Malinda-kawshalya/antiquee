@@ -8,9 +8,9 @@ const Footer = () => {
     <footer className="footer-container">
       <div className="footer-content">
         <div className="footer-section about">
-          <h3>Auction House</h3>
+          <h3>ANTIQUA</h3>
           <p>
-            We are the leading auction house offering a platform for buying and selling valuable items with secure transactions and real-time bidding.
+            We are the leading auction house offering a platform for buying and selling valuable Antique items with secure transactions and real-time bidding.
           </p>
         </div>
         
@@ -44,7 +44,7 @@ const Footer = () => {
       </div>
       
       <div className="footer-bottom">
-        <p>&copy; {new Date().getFullYear()} Auction House | All Rights Reserved</p>
+        <p>&copy; {new Date().getFullYear()} ANTIQUA Auction House | All Rights Reserved</p>
       </div>
     </footer>
   );

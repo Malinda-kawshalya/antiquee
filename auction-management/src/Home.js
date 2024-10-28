@@ -11,26 +11,30 @@ import stamp from './Images/stamp.png';
 import coins from './Images/coins.png';
 import vintageart from './Images/vintageart.png';
 import furniture from './Images/furniture.png';
+import pwatch from './Images/watch.jpeg';
+import map from './Images/mapn.jpeg';
 
 const Home = () => {
   // Sample data for featured auctions, categories, and top-selling items
   const featuredAuctions = [
-    { id: 1, title: 'Vintage Artwork', image:vintageart },
-    { id: 2, title: 'Antique Furniture', image:furniture  },
-    { id: 3, title: 'Rare Coins', image:coins },
+    { id: 1, title: 'VINTAGE ARTWORK', image:vintageart },
+    { id: 2, title: 'ANTIQUE FURNITURE', image:furniture  },
+    { id: 3, title: 'RARE COINS', image:coins },
   ];
 
   const categories = [
-    'Art',
-    'Antiques',
-    'Collectibles',
-    'Jewelry',
+    'ART',
+    'ANTIQUES',
+    'COLLECTIBLES',
+    'JEWELERY',
   ];
 
   const topSellingItems = [
     { id: 1, title: 'Golden Necklace', image:goldnec },
     { id: 2, title: 'Collectible Stamps', image:stamp },
     { id: 3, title: 'Vintage Watches', image:watch },
+    { id: 4, title: 'Pocket Watches', image:pwatch },
+    { id: 5, title: 'Ancient Maps', image:map },
   ];
 
   return (
@@ -55,6 +59,16 @@ const Home = () => {
         </Carousel.Item>
       </Carousel>
 
+      {/* Categories Section */}
+      <section className="categories">
+        <h2>Categories</h2>
+        <div className="category-list">
+          {categories.map((category, index) => (
+            <div key={index} className="category-item">{category}</div>
+          ))}
+        </div>
+      </section>
+
       {/* Featured Auctions Section */}
       <section className="featured-auctions">
         <h2>Featured Auctions</h2>
@@ -68,15 +82,7 @@ const Home = () => {
         </div>
       </section>
 
-      {/* Categories Section */}
-      <section className="categories">
-        <h2>Categories</h2>
-        <div className="category-list">
-          {categories.map((category, index) => (
-            <div key={index} className="category-item">{category}</div>
-          ))}
-        </div>
-      </section>
+      
 
       {/* Top-Selling Items Section */}
       <section className="top-selling-items">

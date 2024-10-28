@@ -61,7 +61,7 @@
 
 /* Button styling */
 .btn-primary.btn-block {
-  background-color: #007bff;
+  background-color: #000000;
   border: none;
   padding: 12px;
   font-size: 1rem;
@@ -70,7 +70,7 @@
 }
 
 .btn-primary.btn-block:hover {
-  background-color: #0056b3;
+  background-color: #e6cc07;
 }
 
 /* Payment method selection styling */

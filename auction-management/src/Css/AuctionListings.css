@@ -62,7 +62,7 @@
 }
 
 .bid-now-button {
-  background-color: #07e6d2;
+  background-color: #000000;
   color: #fff;
   padding: 10px 20px;
   border: none;
@@ -73,7 +73,7 @@
 }
 
 .bid-now-button:hover {
-  background-color: #05c3b1;
+  background-color: #e6cc07;
 }
 
 .pagination {
