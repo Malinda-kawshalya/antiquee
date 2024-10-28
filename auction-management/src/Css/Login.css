@@ -1,46 +1,67 @@
+/* Custom styles for the login container */
 .login-container {
-    max-width: 400px;
-    margin: 0 auto;
-    padding: 2rem;
-    background-color: #f9f9f9;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  }
-  
-  .login-container h2 {
-    text-align: center;
-    margin-bottom: 1.5rem;
-  }
-  
-  .form-group {
-    margin-bottom: 1rem;
-  }
-  
-  .form-control {
-    width: 100%;
-    padding: 0.5rem;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-  }
-  
-  .btn-block {
-    width: 100%;
-    padding: 0.75rem;
-    margin-top: 1rem;
-  }
-  
-  .extra-options {
-    margin-top: 1rem;
-    text-align: center;
-  }
-  
-  .social-login {
-    margin-top: 1.5rem;
-    text-align: center;
-  }
-  
-  .social-login button {
-    margin: 0.5rem;
-    padding: 0.5rem 1rem;
-  }
-  
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 2rem;
+  background-color: #f9f9f9;
+  border-radius: 10px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Centering the title */
+.login-container h2 {
+  text-align: center;
+  margin-bottom: 1.5rem;
+  font-weight: bold;
+}
+
+/* Styling for form groups */
+.form-group {
+  margin-bottom: 1.5rem; /* Increased margin for better spacing */
+}
+
+/* Styling for form controls */
+.form-control {
+  width: 100%;
+  padding: 0.75rem; /* Increased padding for better touch targets */
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+/* Button styling */
+.btn-block {
+  width: 100%;
+  padding: 0.75rem;
+  margin-top: 1rem;
+  background-color: #5C9AE6; /* Custom primary color */
+  border: none;
+  color: white; /* Button text color */
+  border-radius: 5px; /* Rounded button corners */
+}
+
+/* Extra options styling */
+.extra-options {
+  margin-top: 1rem;
+  text-align: center;
+}
+
+/* Social login section */
+.social-login {
+  margin-top: 1.5rem;
+  text-align: center;
+}
+
+/* Styling for social buttons */
+.social-login button {
+  margin: 0.5rem;
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+}
+
+/* Add hover effect on buttons */
+.btn-block:hover {
+  background-color: #28323c; /* Darker shade for hover */
+}
+.social-login button:hover {
+  background-color: #e0e0e0; /* Light grey on hover for social buttons */
+}

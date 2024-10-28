@@ -35,10 +35,7 @@ const Home = () => {
 
   return (
     <div className="home-container">
-      <header className="header">
-        <h1>Welcome to Our Auction House</h1>
-        <p>Your gateway to exclusive auctions and rare items!</p>
-      </header>
+      
 
       {/* Promotional Carousel */}
       <Carousel className="promo-carousel">
