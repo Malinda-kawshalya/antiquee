@@ -24,6 +24,12 @@ const AuctionDetail = () => {
       return;
     }
 
+    // Check if the logged-in user is the auction creator
+    if (userId === auctionItem.userId) {
+      alert("You cannot place a bid on your own auction.");
+      return;
+    }
+
 
 
     if (bid > auctionItem.currentPrice) {
