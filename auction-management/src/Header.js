@@ -17,7 +17,7 @@ const Header = () => {
   return (
     <header className={`header ${menuActive ? 'active' : ''}`}>
       <div className="logo">
-        <Link to="/">ANTIQUA</Link>
+        <Link to="/">SMART HOME</Link>
       </div>
       <nav className={`navbar ${menuActive ? 'active' : ''}`}>
         <ul>

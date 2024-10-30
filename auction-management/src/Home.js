@@ -3,38 +3,34 @@ import './Css/Home.css'; // Import your CSS file for styling
 import Carousel from 'react-bootstrap/Carousel'; // Import Bootstrap Carousel
 import 'bootstrap/dist/css/bootstrap.min.css'; // Make sure to import Bootstrap CSS
 import Footer from './Footer'; 
-import image1 from './Images/caro4.png';
+import image1 from './Images/caro4.jpg';
 import { Link } from 'react-router-dom'; // Import Link from react-router-dom
-import goldnec from './Images/goldneck.png';
-import watch from './Images/watch.png';
-import stamp from './Images/stamp.png';
-import coins from './Images/coins.png';
-import vintageart from './Images/vintageart.png';
-import furniture from './Images/furniture.png';
-import pwatch from './Images/watch.jpeg';
-import map from './Images/mapn.jpeg';
+import mini from './Images/mini.jpg';
+import camera from './Images/camera.jpeg';
+import bell from './Images/bell.jpeg';
+import sec from './Images/secu.jpeg';
+import touch from './Images/touch.jpg';
+import lock from './Images/lock.jpeg';
+import valve from './Images/valve.jpeg';
+import bulb from './Images/bulb.jpeg';
 
 const Home = () => {
   // Sample data for featured auctions, categories, and top-selling items
   const featuredAuctions = [
-    { id: 1, title: 'VINTAGE ARTWORK', image:vintageart },
-    { id: 2, title: 'ANTIQUE FURNITURE', image:furniture  },
-    { id: 3, title: 'RARE COINS', image:coins },
+    { id: 1, title: 'SMART SWITCHES', image:touch },
+    { id: 2, title: 'SMART DOOR LOCKS', image:lock  },
+    { id: 3, title: 'SMART SECURITY SYSTEM', image:sec },
+    
   ];
 
-  const categories = [
-    'ART',
-    'ANTIQUES',
-    'COLLECTIBLES',
-    'JEWELERY',
-  ];
+  
 
   const topSellingItems = [
-    { id: 1, title: 'Golden Necklace', image:goldnec },
-    { id: 2, title: 'Collectible Stamps', image:stamp },
-    { id: 3, title: 'Vintage Watches', image:watch },
-    { id: 4, title: 'Pocket Watches', image:pwatch },
-    { id: 5, title: 'Ancient Maps', image:map },
+    { id: 1, title: 'MINI SMART SWITCH', image:mini },
+    { id: 2, title: 'DOOR BELL', image:bell },
+    { id: 3, title: 'CAMERA', image:camera },
+    { id: 4, title: 'SMART VALVE', image:valve },
+    { id: 5, title: 'BULB', image:bulb },
   ];
 
   return (
@@ -59,15 +55,7 @@ const Home = () => {
         </Carousel.Item>
       </Carousel>
 
-      {/* Categories Section */}
-      <section className="categories">
-        <h2>Categories</h2>
-        <div className="category-list">
-          {categories.map((category, index) => (
-            <div key={index} className="category-item">{category}</div>
-          ))}
-        </div>
-      </section>
+    
 
       {/* Featured Auctions Section */}
       <section className="featured-auctions">
