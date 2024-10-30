@@ -46,7 +46,7 @@
   }
   
   .btn-primary {
-    background: linear-gradient(135deg, #e6cc07, #000000);
+    background: linear-gradient(135deg, #279fdb, #032e42);
     border: none;
     color: #fff;
     padding: 12px;
@@ -58,7 +58,7 @@
   }
   
   .btn-primary:hover {
-    background: linear-gradient(135deg, #0056b3, #004494);
+    background: linear-gradient(135deg, #279fdb, #032e42);
     transform: translateY(-3px);
   }
   
