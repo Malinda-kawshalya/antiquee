@@ -20,10 +20,12 @@ const AboutUs = () => {
     <div className="about-us-container">
       <h1>About Us</h1>
       <p>
-        Welcome to Auction House, your premier destination for online auctions. 
-        Our platform connects buyers and sellers with a wide range of unique and valuable items. 
-        Our dedicated team works tirelessly to ensure a seamless auction experience, 
-        offering innovative features and exceptional customer support.
+        
+Welcome to Smart Home, your trusted online auction platform for innovative and modern home solutions. At Smart Home, we bring together buyers and sellers, creating a vibrant marketplace for discovering unique, high-quality items that elevate living spaces. Our mission is to empower homeowners, enthusiasts, and sellers with an easy, secure, and exciting way to connect over shared passions for design, technology, and style.
+
+Our platform features a wide range of products, from smart home gadgets and stylish furniture to essential decor and eco-friendly solutions, each accessible through fair and transparent auctions. We prioritize user satisfaction, streamlined bidding, and secure transactions, ensuring that both buyers and sellers enjoy a seamless experience.
+
+At Smart Home, we believe in creating a space where quality meets convenience. Join us in building a smarter, more connected living environment—one auction at a time.
       </p>
       <h1>Meet Our Team</h1>
       <div className="team-container">
