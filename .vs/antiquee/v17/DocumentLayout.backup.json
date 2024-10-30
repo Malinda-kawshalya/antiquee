@@ -1,0 +1,37 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\PATHAYAA\\Desktop\\antiquee\\antiquee\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{64453BD6-392E-47BF-96F3-36C07B34919F}|backend\\backend.csproj|c:\\users\\pathayaa\\desktop\\antiquee\\antiquee\\backend\\controllers\\auction.controller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{64453BD6-392E-47BF-96F3-36C07B34919F}|backend\\backend.csproj|solutionrelative:backend\\controllers\\auction.controller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Auction.controller.cs",
+              "DocumentMoniker": "C:\\Users\\PATHAYAA\\Desktop\\antiquee\\antiquee\\backend\\Controllers\\Auction.controller.cs",
+              "RelativeDocumentMoniker": "backend\\Controllers\\Auction.controller.cs",
+              "ToolTip": "C:\\Users\\PATHAYAA\\Desktop\\antiquee\\antiquee\\backend\\Controllers\\Auction.controller.cs",
+              "RelativeToolTip": "backend\\Controllers\\Auction.controller.cs",
+              "ViewState": "AgIAACcAAAAAAAAAAAAYwAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-30T18:50:34.241Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

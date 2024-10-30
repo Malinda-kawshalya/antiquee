@@ -2,29 +2,6 @@ import React, { useState, useEffect } from "react";
 import "./Css/AuctionListings.css"; // Import CSS for styling
 import { Link } from "react-router-dom";
 import axios from "axios";
-import art from './Images/art.jpeg';
-
-// Function to create dummy auction items
-const createDummyData = () => {
-  const categories = ["Art", "Antiques", "Collectibles", "Jewelry"];
-  const itemsPerCategory = 51; // 204 items total
-  let items = [];
-
-  for (let category of categories) {
-    for (let i = 1; i <= itemsPerCategory; i++) {
-      items.push({
-        id: items.length + 1,
-        title: `${category} Item ${i}`,
-        price: (Math.random() * 100).toFixed(2),
-        category: category,
-        closingTime: new Date(Date.now() + Math.random() * 604800000).toISOString(), // random closing time within a week
-        image: `https://via.placeholder.com/150?text=${category}+Item+${i}`, // Placeholder image URL
-        description: `This is a brief description of ${category} Item ${i}.` // Sample description
-      });
-    }
-  }
-  return items;
-};
 
 const AuctionListings = () => {
   const [searchTerm, setSearchTerm] = useState("");
@@ -32,7 +9,21 @@ const AuctionListings = () => {
   const [categoryFilter, setCategoryFilter] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 5;
-  const [auctionItems, setAuctionItems] = useState(createDummyData()); // Use dummy data here
+  const [auctionItems, setAuctionItems] = useState([]); // Initialize with an empty array
+
+  // Fetch all auction items from the API
+  const getAllAuctionList = async () => {
+    try {
+      const res = await axios.get("http://localhost:5140/api/Auction/all");
+      setAuctionItems(res.data);
+    } catch (err) {
+      console.error("Failed to fetch auction items:", err);
+    }
+  };
+
+  useEffect(() => {
+    getAllAuctionList();
+  }, []);
 
   // Filter and sort auctions
   const filteredItems = auctionItems
@@ -54,23 +45,6 @@ const AuctionListings = () => {
     (currentPage - 1) * itemsPerPage,
     currentPage * itemsPerPage
   );
-
-  // This function can be removed if you're using dummy data only
-  const getAllAuctionList = async () => {
-    console.log("Get all listings");
-    await axios
-      .get("http://localhost:5140/api/Auction/all")
-      .then((res) => {
-        setAuctionItems(res.data);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  };
-
-  useEffect(() => {
-    getAllAuctionList(); // Uncomment this line if you want to fetch from API later
-  }, []);
 
   return (
     <div className="auction-listings-container">
@@ -110,14 +84,14 @@ const AuctionListings = () => {
       <div className="auction-items">
         {paginatedItems.map((item) => (
           <div key={item.id} className="auction-item">
-            <img src={art} alt={item.title} className="auction-item-image" /> {/* Add image */}
+            <img
+              src={`http://localhost:5140${item.image}`}
+              alt={item.title}
+              className="auction-item-image"
+            />
             <h3>{item.title}</h3>
-            <p>description</p> {/* Add description */}
-            <p>Price: ${item.price}</p>
-            <p>Category: {item.category}</p>
-            <p>
-              Closing Time: {new Date(item.closingTime).toLocaleDateString()}
-            </p>
+            <p>{item.description}</p>
+            <p>Price: ${item.startingPrice}</p>
             <Link to={`/auction-detail/${item.id}`} className="bid-now-button">
               Bid Now
             </Link>
