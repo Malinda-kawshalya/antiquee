@@ -64,8 +64,8 @@ const Contact = () => {
 
         <div className="contact-info">
           <h3>Contact Information</h3>
-          <p><strong>Email:</strong> info@smarthome.lk.com</p>
-          <p><strong>Phone:</strong> 076 11111 50</p>
+          <p><strong>Email:</strong> info@smarthomelk.com</p>
+          <p><strong>Phone:</strong> 070 11111 50</p>
           <p><strong>Address:</strong> Smart-Home, Pitipana South, Homagama</p>
         </div>
       </div>
