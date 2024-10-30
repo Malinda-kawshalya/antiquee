@@ -1,14 +1,24 @@
 // src/AboutUs.js
 import React from 'react';
 import './Css/About.css'; // Import your CSS file for styling
-import malinda from './Images/malinda.JPG';
+<<<<<<< HEAD
+//import malinda from '#';
 
 const AboutUs = () => {
   const teamMembers = [
-    { id: 1, name: 'Malinda Kawshalya', role: 'Underrgraduate' , image:malinda },
+    //{ id: 1, name: 'Malinda Kawshalya', role: 'Underrgraduate' , image:malinda },
     { id: 2, name: 'Nithini Jyathilaka', role: 'Underrgraduate' , image: 'path_to_image2.jpg' },
     { id: 3, name: 'Ravindu Pahan', role: 'Underrgraduate', image: 'path_to_image3.jpg' },
     { id: 4, name: 'Chirath Bupa', role: 'Underrgraduate', image: 'path_to_image4.jpg' },
+=======
+
+const AboutUs = () => {
+  const teamMembers = [
+    { id: 1, name: 'Malinda Kawshalya', role: 'Underrgraduate' },
+    { id: 2, name: 'Nithini Jyathilaka', role: 'Underrgraduate'  },
+    { id: 3, name: 'Ravindu Pahan', role: 'Underrgraduate' },
+    { id: 4, name: 'Chirath Bupa', role: 'Underrgraduate' },
+>>>>>>> 0abb894f18cc48bd0d03b9d48a9945b9bf5e73b0
     
   ];
 
