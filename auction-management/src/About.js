@@ -27,16 +27,6 @@ Our platform features a wide range of products, from smart home gadgets and styl
 
 At Smart Home, we believe in creating a space where quality meets convenience. Join us in building a smarter, more connected living environment—one auction at a time.
       </p>
-      <h1>Meet Our Team</h1>
-      <div className="team-container">
-        {teamMembers.map((member) => (
-          <div key={member.id} className="team-member">
-            <img src={member.image} alt={member.name} />
-            <h3>{member.name}</h3>
-            <p>{member.role}</p>
-          </div>
-        ))}
-      </div>
     </div>
   );
 };
