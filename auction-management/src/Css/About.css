@@ -1,10 +1,26 @@
 /* src/Css/AboutUs.css */
-.about-us-container {
-    padding: 40px;
-    font-family: 'Arial', sans-serif;
-    background-color: #f9f9f9;
-    color: #333;
-  }
+.about-container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  color: #333;
+  font-family: Arial, sans-serif;
+  line-height: 1.6;
+}
+
+.about-container h1 {
+  font-size: 4em;
+  margin-bottom: 15px;
+  color: #e6cc07;
+  text-align: center;
+}
+
+.about-container p {
+  font-size: 1.1em;
+  margin-bottom: 15px;
+  text-align: justify;
+}
+
   
   .about-us-container h1 {
     font-size: 3.5em;
@@ -20,55 +36,22 @@
     margin-right: 100;
     margin-top: 100;
     text-align: justify;
+  }
 
-  
-  }
-  
-  .team-container {
-    display: grid; /* Use grid for layout */
-    grid-template-columns: repeat(4, 1fr); /* Four equal columns */
-    gap: 20px; /* Spacing between columns */
-  }
-  
-  .team-member {
-    text-align: center;
-    background: white;
-    border-radius: 10px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    padding: 20px;
-  }
-  
-  .team-member img {
-    width: 100%;
-    height: auto;
-    border-radius: 50%;
-  }
-  
-  .team-member h3 {
-    margin: 15px 0 5px;
-    font-size: 1.5em;
-  }
-  
-  .team-member p {
-    color: #666;
-  }
-  
-  /* Responsive Design */
-  @media (max-width: 1200px) {
-    .team-container {
-      grid-template-columns: repeat(3, 1fr); /* Three columns on medium screens */
-    }
-  }
-  
-  @media (max-width: 800px) {
-    .team-container {
-      grid-template-columns: repeat(2, 1fr); /* Two columns on small screens */
-    }
-  }
-  
-  @media (max-width: 500px) {
-    .team-container {
-      grid-template-columns: 1fr; /* One column on extra small screens */
-    }
-  }
-  
+  * Location Section Styling */
+.location {
+  margin-top: 30px;
+  padding-top: 20px;
+  border-top: 1px solid #ccc;
+}
+
+.location h2 {
+  font-size: 3em;
+  color: #e6cc07;
+  margin-bottom: 10px;
+}
+
+.location p {
+  font-size: 1.1em;
+  margin: 5px 0;
+}
