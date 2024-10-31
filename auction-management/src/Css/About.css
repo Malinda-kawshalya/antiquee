@@ -21,6 +21,7 @@
   text-align: justify;
 }
 
+
   
   .about-us-container h1 {
     font-size: 3.5em;
@@ -37,21 +38,3 @@
     margin-top: 100;
     text-align: justify;
   }
-
-  * Location Section Styling */
-.location {
-  margin-top: 30px;
-  padding-top: 20px;
-  border-top: 1px solid #ccc;
-}
-
-.location h2 {
-  font-size: 3em;
-  color: #e6cc07;
-  margin-bottom: 10px;
-}
-
-.location p {
-  font-size: 1.1em;
-  margin: 5px 0;
-}
