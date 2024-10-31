@@ -29,13 +29,7 @@ const AboutUs = () => {
     At Smart Home, we believe in creating a space where quality meets convenience. Join us in building a smarter, more connected living environment—one auction at a time.
   </p>
 
-  <div class="location">
-    <h2>Our Location</h2>
-    <p>Smart Home Headquarters</p>
-    <p>123 Innovation Way</p>
-    <p>Smart City, ST 12345</p>
-    <p>Country: [Your Country]</p>
-  </div>
+  
 </div>
   );
 };
