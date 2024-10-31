@@ -22,17 +22,24 @@ const Header = () => {
       <nav className={`navbar ${menuActive ? 'active' : ''}`}>
         <ul>
           <li><Link to="/">Home</Link></li>
+
           <li className="dropdown">
-            <button className="dropdown-toggle" onClick={toggleDropdown}>
-              Auctions
-            </button>
-            {dropdownActive && (
-              <ul className="dropdown-menu">
-                <li><Link to="/auctions">All Auctions</Link></li>
-                <li><Link to="/create-auction">Create Auction</Link></li>
-              </ul>
-            )}
-          </li>
+  <button className="dropdown-toggle" onClick={toggleDropdown} aria-expanded={dropdownActive}>
+    Auctions
+  </button>
+  {dropdownActive && (
+    <ul className="dropdown-menu">
+      <li>
+        <Link to="/auctions" onClick={toggleDropdown}>All Auctions</Link>
+      </li>
+      <li>
+        <Link to="/create-auction" onClick={toggleDropdown}>Create Auction</Link>
+      </li>
+    </ul>
+  )}
+</li>
+
+
           <li><Link to="/about">About Us</Link></li>
           <li><Link to="/contact">Contact</Link></li>
           <li><Link to="/login">Login</Link></li>
