@@ -84,7 +84,7 @@
 }
 
 .pagination button {
-  background-color: #795757;
+  background-color: #065664;
   color: #fff;
   padding: 10px 20px;
   border: none;
@@ -130,7 +130,7 @@
 }
 
 .btn-secondary {
-  background-color: #795757; /* Secondary button color */
+  background-color: #065664; /* Secondary button color */
   color: #fff;
   padding: 10px 20px;
   border: none;

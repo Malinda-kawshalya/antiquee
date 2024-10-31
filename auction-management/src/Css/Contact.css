@@ -71,7 +71,7 @@
   }
   
   .btn-submit {
-    background-color: #000000;
+    background-color: #065664;
     color: #fff;
     padding: 15px;
     font-size: 1.1em;
@@ -82,7 +82,7 @@
   }
   
   .btn-submit:hover {
-    background-color: #e6cc07;
+    background-color: #065664;
   }
   
   .contact-info {
