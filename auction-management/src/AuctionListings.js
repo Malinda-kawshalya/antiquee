@@ -68,10 +68,10 @@ const AuctionListings = () => {
         />
         <select onChange={(e) => setCategoryFilter(e.target.value)}>
           <option value="">All Categories</option>
-          <option value="Jewelry">Jewelry</option>
-          <option value="Art">Art</option>
-          <option value="Antiques">Antiques</option>
-          <option value="Collectibles">Collectibles</option>
+          <option value="Jewelry">Smart Switch</option>
+          <option value="Art">Smart Pluge</option>
+          <option value="Antiques">Smart Bulbe</option>
+          <option value="Collectibles">Remote Controls</option>
         </select>
         <select onChange={(e) => setSortOption(e.target.value)}>
           <option value="">Sort By</option>
