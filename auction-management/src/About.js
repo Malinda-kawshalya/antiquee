@@ -11,9 +11,6 @@ const AboutUs = () => {
     { id: 3, name: 'Ravindu Pahan', role: 'Underrgraduate', image: 'path_to_image3.jpg' },
     { id: 4, name: 'Chirath Bupa', role: 'Underrgraduate', image: 'path_to_image4.jpg' },
 
-
-
-    
   ];
 
   return (
@@ -28,8 +25,6 @@ const AboutUs = () => {
   <p>
     At Smart Home, we believe in creating a space where quality meets convenience. Join us in building a smarter, more connected living environment—one auction at a time.
   </p>
-
-  
 </div>
   );
 };
