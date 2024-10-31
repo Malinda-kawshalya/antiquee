@@ -39,7 +39,7 @@
 .navbar a, .dropdown-toggle {
     color: white;
     text-decoration: none;
-    font-size: 18px;
+    font-size: 19px;
     transition: color 0.3s ease, transform 0.3s ease; /* Added transform for hover effect */
     background: none;
     border: none;
@@ -57,11 +57,11 @@
     position: absolute;
     top: 100%;
     left: 0;
-    background-color: #302b2b; /* Dropdown background */
+    background-color: #032e42; /* Dropdown background */
     padding: 0;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
     border-radius: 8px;
-    min-width: 160px;
+    min-width: 166px;
     flex-direction: column; /* Arrange items vertically */
 }
 
